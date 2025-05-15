@@ -29,11 +29,11 @@ function App() {
       }
     };
     fetchData();
-    //useEffect set to only fetch data at initial page load
   });
 
   //render data
   return (
+    //if error exists, return setError state, else return the setData state which is mapped through
     <div>
       {error ? (
         <div>{error}</div>
