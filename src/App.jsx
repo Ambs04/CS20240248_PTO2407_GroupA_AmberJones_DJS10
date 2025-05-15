@@ -31,6 +31,7 @@ function App() {
       }
     };
     fetchData();
+    //useEffect will run each time there is a change to the API url
   }, [url]);
 
   //render data
