@@ -22,6 +22,14 @@ function App() {
     fetchData();
     //useEffect set to only fetch data at initial page load
   }, []);
+
+  //render data
+  return state.map((item) => (
+    <div key={item.id}>
+      <h2>{item.title}</h2>
+      <p>{item.body}</p>
+    </div>
+  ));
 }
 
 export default App;
