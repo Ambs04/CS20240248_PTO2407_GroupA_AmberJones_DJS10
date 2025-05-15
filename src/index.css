@@ -1,0 +1,12 @@
+.heading,
+.title,
+.body {
+  text-align: center;
+}
+
+.error {
+  color: darkred;
+  font-size: larger;
+  font-weight: bolder;
+  text-align: center;
+}

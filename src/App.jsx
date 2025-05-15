@@ -1,3 +1,4 @@
+import "./index.css";
 import { useState, useEffect } from "react";
 
 function App() {
@@ -38,13 +39,14 @@ function App() {
   return (
     //if error exists, return setError state, else return the setData state which is mapped through
     <div>
+      <h1 class="heading">Posts</h1>
       {error ? (
-        <div>{error}</div>
+        <div class="error">{error}</div>
       ) : (
         state.map((item) => (
           <div key={item.id}>
-            <h2>{item.title}</h2>
-            <p>{item.body}</p>
+            <h2 class="title">{item.title}</h2>
+            <p class="body">{item.body}</p>
           </div>
         ))
       )}
