@@ -12,11 +12,18 @@ function App() {
       //try to fetch data
       try {
         const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+
+        //check if the response from the API fetch is ok, if not throw a error that reports the response status
+        if (!res.ok) {
+          throw new Error(`HTTP ERROR! status: ${res.status}`);
+        }
+
         const data = await res.json();
         setState(data);
       } catch (err) {
         //catch for if data fetch is not successful, then error message will be displayed in the console.
         console.error("Error: Data Fetching Failed");
+        setError("Error: Data Fetch Failed");
       }
     };
     fetchData();
