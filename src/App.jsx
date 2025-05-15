@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 
 function App() {
+  //set API url into its own state
+  const [url] = useState("https://jsonplaceholder.typicode.com/posts");
   //set data state
   const [state, setState] = useState([]);
   //set error state
@@ -11,7 +13,7 @@ function App() {
     const fetchData = async () => {
       //try to fetch data
       try {
-        const res = await fetch("https://jsonplaceholder.typicode.com/posts", {
+        const res = await fetch(url, {
           method: "GET",
         });
 
@@ -29,7 +31,7 @@ function App() {
       }
     };
     fetchData();
-  });
+  }, [url]);
 
   //render data
   return (
