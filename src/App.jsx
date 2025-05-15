@@ -11,7 +11,9 @@ function App() {
     const fetchData = async () => {
       //try to fetch data
       try {
-        const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+        const res = await fetch("https://jsonplaceholder.typicode.com/posts", {
+          method: "GET",
+        });
 
         //check if the response from the API fetch is ok, if not throw a error that reports the response status
         if (!res.ok) {
@@ -22,21 +24,29 @@ function App() {
         setState(data);
       } catch (err) {
         //catch for if data fetch is not successful, then error message will be displayed in the console.
-        console.error("Error: Data Fetching Failed");
+        console.error("Error: Data Fetching Failed", err);
         setError("Error: Data Fetch Failed");
       }
     };
     fetchData();
     //useEffect set to only fetch data at initial page load
-  }, []);
+  });
 
   //render data
-  return state.map((item) => (
-    <div key={item.id}>
-      <h2>{item.title}</h2>
-      <p>{item.body}</p>
+  return (
+    <div>
+      {error ? (
+        <div>{error}</div>
+      ) : (
+        state.map((item) => (
+          <div key={item.id}>
+            <h2>{item.title}</h2>
+            <p>{item.body}</p>
+          </div>
+        ))
+      )}
     </div>
-  ));
+  );
 }
 
 export default App;
